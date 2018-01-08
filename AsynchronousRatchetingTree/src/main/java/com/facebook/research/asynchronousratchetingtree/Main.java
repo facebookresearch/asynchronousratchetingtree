@@ -16,13 +16,17 @@ import com.facebook.research.asynchronousratchetingtree.dhratchet.DHRatchet;
 import com.facebook.research.asynchronousratchetingtree.dhratchet.DHRatchetSetupPhase;
 import com.facebook.research.asynchronousratchetingtree.dhratchet.DHRatchetState;
 
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.*;
+import javax.crypto.Cipher;
 
 public class Main {
   private static boolean debug = true;
 
   public static void main(String[] args) {
+    checkForUnlimitedStrengthCrypto();
+
     // Run a test run first to warm up the JIT
     artTestRun(8, 8);
     dhTestRun(8, 8);
@@ -90,6 +94,24 @@ public class Main {
       new ARTSetupPhase(),
       new ARTTestImplementation()
     );
+  }
+
+  private static void checkForUnlimitedStrengthCrypto() {
+    boolean hasEnoughCrypto = true;
+    try {
+      if (Cipher.getMaxAllowedKeyLength("AES") < 256) {
+        hasEnoughCrypto = false;
+      }
+    } catch (NoSuchAlgorithmException e) {
+      hasEnoughCrypto = false;
+    }
+    if (!hasEnoughCrypto) {
+      Utils.except("Your JRE does not support unlimited-strength " +
+		   "cryptography and thus cannot run ART. See README.md " +
+		   "for Java Cryptography Extension (JCE) Unlimited " +
+		   "Strength Jurisdiction Policy Files installation " +
+		   "instructions.");
+    }
   }
 
   private static TestResult dhTestRun(int n, int activePeers) {
