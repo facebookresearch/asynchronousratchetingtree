@@ -4,8 +4,10 @@ Asynchronous Ratcheting Tree (ART) is a protocol for end-to-end encrypted group
 messaging. It aims to provide scalable group messaging while maintaining strong
 security guarantees.
 
-This repository contains the implementation used for the results in [our ART paper](https://eprint.iacr.org/2017/666).
-It contains implementations of ART and a pairwise Diffie-Hellman based ratcheting protocol which we used for comparison.
+This repository contains the implementation used for the results in
+[our ART paper](https://eprint.iacr.org/2017/666). It contains implementations of
+ART and a pairwise Diffie-Hellman based ratcheting protocol which we used for
+comparison.
 
 ## Requirements
 
