@@ -19,8 +19,8 @@ import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * This crypto class is put together simply to make coding the rest of the example program easier. Please never actually
@@ -96,18 +96,8 @@ public class Crypto {
 
   public static byte[] randomBytes(int n) {
     byte[] result = new byte[n];
-    try {
-	/* Nobody should ever use java.util.Random. However,
-	 * SecureRandom doesn't work out of the box on all platforms
-	 * (e.g. the openjdk in Ubuntu's repositories), so we'll use
-	 * Random here to make it easier for anyone to
-	 * run. Fortunately, this is not intended to be used for
-	 * actual secure messaging, so that's all right. */
-	Random rng = new Random();
-	rng.nextBytes(result);
-    } catch (Exception e) {
-      throw Utils.except(e);
-    }
+    SecureRandom rng = new SecureRandom();
+    rng.nextBytes(result);
     return result;
   }
 
