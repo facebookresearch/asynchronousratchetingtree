@@ -44,6 +44,10 @@ We are grateful to our collaborators from Oxford University for the considerable
 time and expertise that they put in to this paper, and into the formal proofs of
 the ART protocol.
 
+## Contributing
+
+See the CONTRIBUTING file for how to help out.
+
 ## License
 
 Asynchronous Ratcheting Tree is CC-BY-NC-licensed.
