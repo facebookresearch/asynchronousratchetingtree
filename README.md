@@ -9,7 +9,7 @@ This repository contains the implementation used for the results in
 ART and a pairwise Diffie-Hellman based ratcheting protocol which we used for
 comparison.
 
-This implementation in this repository is purely academic example code, and should
+The implementation in this repository is purely academic example code, and should
 not be used in any production or security-critical system.
 
 ## Requirements
