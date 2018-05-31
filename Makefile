@@ -10,7 +10,7 @@ help:
 
 run: compile ## Run benchmarks from the paper, printing results to stdout
 	@command -v java >/dev/null 2>&1 || { echo >&2 "I require java but it's not installed.  Aborting."; exit 1; }
-	java -Xms10g -Xmx10g -jar AsynchronousRatchetingTree/target/uber-AsynchronousRatchetingTree-1.0-SNAPSHOT.jar
+	java -Xms10g -Xmx10g -jar AsynchronousRatchetingTree/target/uber-asynchronousratchetingtree-1.0-SNAPSHOT.jar
 
 compile: ## Compile benchmarks
 	@command -v mvn >/dev/null 2>&1 || { echo >&2 "I require maven but it's not installed.  Aborting."; exit 1; }
