@@ -62,6 +62,7 @@ public class Main {
       if (n == lastNumber) {
         continue;
       }
+      lastNumber = n;
       System.gc();
       dhResults.add(dhTestRun(n, n));
     }
